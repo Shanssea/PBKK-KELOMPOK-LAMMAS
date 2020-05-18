@@ -146,5 +146,30 @@ class PermohonanRuanganController extends \Phalcon\Mvc\Controller
             $this->view->namalab = $infolab->nama_lab;
         }
     }
+
+    public function cancelAction($id,$pinjLabId)
+    {
+        $this->view->pinjLabId = $pinjLabId;
+
+        $conditions = ['id_plab' => $pinjLabId];
+        $pinjLab = PermohonanRuangan::findFirst([
+            'conditions' => 'id_plab=:id_plab:',
+            'bind' => $conditions,
+        ]);
+
+        $success = $pinjLab->delete();
+
+        if ($success) {
+            return $this->response->redirect("/mahasiswa/dashboard");
+        } else {
+            echo "Oops, seems like the following issues were encountered: ";
+
+            $messages = $inven->getMessages();
+
+            foreach ($messages as $message) {
+                echo $message->getMessage(), "<br/>";
+            }
+        }
+    }
 }
 

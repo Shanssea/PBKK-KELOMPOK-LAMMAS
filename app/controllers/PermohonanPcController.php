@@ -106,5 +106,30 @@ class PermohonanPcController extends \Phalcon\Mvc\Controller
             header("refresh:2;url=/");
         }
     }
+
+    public function cancelAction($id,$pinjPcId)
+    {
+        $this->view->pinjPcId = $pinjPcId;
+
+        $conditions = ['id_ppc' => $pinjPcId];
+        $pinjPc = PermohonanPc::findFirst([
+            'conditions' => 'id_ppc=:id_ppc:',
+            'bind' => $conditions,
+        ]);
+
+        $success = $pinjPc->delete();
+
+        if ($success) {
+            return $this->response->redirect("/mahasiswa/dashboard");
+        } else {
+            echo "Oops, seems like the following issues were encountered: ";
+
+            $messages = $inven->getMessages();
+
+            foreach ($messages as $message) {
+                echo $message->getMessage(), "<br/>";
+            }
+        }
+    }
 }
 

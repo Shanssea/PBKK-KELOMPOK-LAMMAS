@@ -31,6 +31,37 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
     public function dashboardAction()
     {
         $this->view->pagetitle = "Dashboard";
+
+        $id = $this->session->user_id;
+        $this->view->id = $id;
+        $conditions = ['id' => $id];
+
+        # untuk daftar list pinjaman barang user
+        $this->view->pinjInvs = ListPinjamInv::find(
+            [
+                'id_user = (:id:)',
+                'bind' => $conditions,
+            ]
+        );
+
+        # untuk daftar list pinjaman ruang si user
+        $this->view->pinjLabs = PermohonanRuangan::find(
+            [
+                'id_user = (:id:)',
+                'bind' => $conditions,
+            ]
+        );
+
+        $this->view->labs = Laboratorium::find();
+        $this->view->pcs = Pc::find();
+
+        #untuk daftar list reservasi pc user
+        $this->view->pinjPcs = PermohonanPc::find(
+            [
+                'id_user = (:id:)',
+                'bind' => $conditions,
+            ]
+        );
     }
 
     /**

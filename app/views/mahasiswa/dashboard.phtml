@@ -1,18 +1,138 @@
 <?php
-
 if ($this->session->isAdmin == 0) {
+    $name = $this->session->get('nama');
+    //$id = $this->session->get('id');
     ?>
-    <div class="box col-md-6">
-        <!-- <h5>Menu</h5>
-        <ul>
-            <li><?php echo $this->tag->linkTo("/mahasiswa/reservasipcpage", "Reservasi PC"); ?>
-            <li><?php echo $this->tag->linkTo("/mahasiswa/jadwalpemakaianruangan", "Melihat jadwal pemakaian lab"); ?>
-        </ul> -->
-    </div>
-
-<?php    
+    <h3>Barang Pinjaman</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nomor</th>
+                <th>Nama Barang</th>
+                <th>Tanggal Pinjam</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($pinjInvs->count() > 0) {
+                ?>
+            <?php foreach ($pinjInvs as $pinjInv) { ?>
+                <tr>
+                    <td class="counterCell"></td>
+                    <td><?php echo $pinjInv->nama_barang; ?></td>
+                    <td><?php echo $pinjInv->tanggal; ?></td>
+                    <td><?php echo $pinjInv->keperluan; ?></td>
+                    <td><?php echo $pinjInv->status; ?></td>
+                </tr>
+                <?php } ?>
+            <?php }else{?>
+                        <tr>
+                            <td colspan="5"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
+                        </tr>
+                        <?php
+                    } ?>
+        </tbody>
+    </table>
+    <h3>Reservasi Ruangan</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nomor</th>
+                <th>Nama Lab</th>
+                <th>Tanggal Pinjam</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($pinjLabs->count() > 0) {
+                ?>
+            <?php foreach ($pinjLabs as $pinjLab) { ?>
+                <tr>
+                    <td class="counterCell"></td>
+                    <td>
+                    <?php 
+                        foreach ($labs as $lab){
+                            if ($pinjLab->id_lab == $lab->id_lab){
+                                echo $lab->nama_lab;
+                            }else{
+                                continue;
+                            }
+                        } 
+                    ?>
+                    </td>
+                    <td><?php echo $pinjLab->tanggal; ?></td>
+                    <td><?php echo $pinjLab->keperluan; ?></td>
+                    <td><?php echo $pinjLab->status; ?></td>
+                </tr>
+                <?php } ?>
+            <?php }else{?>
+                        <tr>
+                            <td colspan="5"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
+                        </tr>
+                        <?php
+                    } ?>
+        </tbody>
+    </table>
+    <h3>Reservasi PC</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nomor</th>
+                <th>Nama Lab</th>
+                <th>Nama PC</th>
+                <th>Tanggal Pinjam</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($pinjPcs->count() > 0) {
+                ?>
+            <?php foreach ($pinjPcs as $pinjPc) { ?>
+                <tr>
+                    <td class="counterCell"></td>
+                    <td>
+                    <?php 
+                        foreach ($labs as $lab){
+                            if ($pinjPc->id_lab == $lab->id_lab){
+                                echo $lab->nama_lab;
+                            }else{
+                                continue;
+                            }
+                        } 
+                    ?>
+                    </td>
+                    <td>
+                    <?php 
+                        foreach ($pcs as $pc){
+                            if ($pinjPc->id_pc == $pc->id_pc){
+                                echo $pc->nama_pc;
+                            }else{
+                                continue;
+                            }
+                        } 
+                    ?>
+                    </td>
+                    <td><?php echo $pinjPc->tanggal; ?></td>
+                    <td><?php echo $pinjPc->keperluan; ?></td>
+                    <td><?php echo $pinjPc->status; ?></td>
+                </tr>
+                <?php } ?>
+            <?php }else{?>
+                        <tr>
+                            <td colspan="6"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
+                        </tr>
+                        <?php
+                    } ?>
+        </tbody>
+    </table>
+    <?php
+}else{
+    echo "Sorii, hanya " . $name . " yang bisa mengakses halaman ini :)";
+    header( "refresh:2;url=/" );
 }
-else {
-    echo "You must login to see this page";
-    header("refresh:2;url=/pengguna/loginpage");
-} ?>
