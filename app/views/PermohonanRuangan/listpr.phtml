@@ -1,0 +1,92 @@
+<?php
+if ($this->session->isAdmin) {
+
+    echo "<h5>List Reservasi Ruangan Lab " . $namalab . "<h5>";
+    if(!$this->session->isAdmin) {   
+        echo $this->tag->linkTo("/mahasiswa/reservelabpage", "Reservasi lab")."</br>";
+    }
+    if($this->session->isAdmin) {   
+        echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard");
+    } else {
+        echo $this->tag->linkTo("/mahasiswa/dashboard", "Kembali ke dashboard");
+    } ?>
+
+    <div class="box col-md-10">
+        <?php foreach ($prs as $pr) { ?>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Waktu</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+                <th>Permohonan masuk</th>
+                <?php
+                    if($this->session->isAdmin)
+                    {   
+                        echo "<th></th>";
+                    }
+                ?>
+            </tr>
+            </thead>
+            <tbody>
+            <?php 
+            $i=1;
+            foreach ($prs as $pr) { 
+                if($pr->status == "Permohonan ditolak"){
+                    echo "<tr style='color:red;'>";
+                } elseif($pr->status == "Permohonan diterima"){
+                    echo "<tr style='color:green;'>";
+                }
+                ?>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $pr->tanggal; ?></td>
+                    <td><?php echo $pr->keperluan; ?></td>
+                    <td><?php echo $pr->status; ?></td>
+                    <td><?php echo $pr->created_at; ?></td>
+                    <?php
+                        if($this->session->isAdmin)
+                        {   
+                            echo "<td>";
+                            echo $this->tag->linkTo("/admin/detailreservasilab/".$pr->id_plab, "Lihat detail");
+                            echo "</td>";
+                        }
+                    ?>
+                </tr>
+            <?php $i++; }?>
+            </tbody>
+        </table>
+    </div>
+    <?php    
+    }
+}
+else {
+echo "Syapa kaw";
+header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+.thead-blu {
+    background-color:#c7e8f3;
+}
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      /* padding-right: 80px; */
+      text-align: center;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
+      padding:20px 50px;
+      margin:auto;
+      float:none;
+}
+.page-header{
+      margin:auto;
+}
+</style>

@@ -1,0 +1,66 @@
+<?php
+if ($this->session->isAdmin) {
+
+echo "<h5>List Reservasi PC Lab<h5>";
+echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard"); ?>
+
+    <div class="box col-md-10">
+        <?php foreach ($ppcs as $ppc) { ?>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-blu">
+            <tr>
+                <th>#</th>
+                <th>Jenis Peminjaman</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php 
+            $i=1;
+            foreach ($ppcs as $ppc) { ?>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $ppc->jenis; ?></td>
+                    <td><?php echo $ppc->keperluan; ?></td>
+                    <td><?php echo $ppc->status; ?></td>
+                    <td><?php echo $this->tag->linkTo("/admin/detailreservasipc/".$ppc->id_ppc, "Lihat detail"); ?></td>
+                </tr>
+            <?php $i++; } ?>
+            </tbody>
+        </table>
+    </div>
+<?php    
+}
+}
+else {
+echo "You must login to see this page";
+header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+.thead-blu {
+    background-color:#c7e8f3;
+}
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      /* padding-right: 80px; */
+      text-align: center;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
+      padding:20px 50px;
+      margin:auto;
+      float:none;
+}
+.page-header{
+      margin:auto;
+}
+</style>

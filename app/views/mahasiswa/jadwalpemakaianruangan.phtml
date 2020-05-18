@@ -1,0 +1,8 @@
+<?php
+echo $this->tag->form("/mahasiswa/jadwallab");
+echo "<h5> Lihat jadwal lab <h5>";
+echo $form->render('lab')." ";
+echo $this->tag->submitButton(["Lihat!", 'class' => 'btn btn-primary']);
+echo "</br></br>".$this->tag->linkTo("/mahasiswa/dashboard", " Kembali");
+?>
+</form>

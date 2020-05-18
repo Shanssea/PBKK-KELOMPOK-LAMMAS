@@ -1,0 +1,76 @@
+<?php
+
+if ($this->session->isAdmin) { ?>
+    <h2>Detail Reservasi Lab</h2>
+<div class="box col-md-4">
+    <p>
+        <label for="nama"><b>Nama</b> :</label>
+        <?php echo $nama ?>
+    </p>
+    <p>
+        <label for="nrp"><b>NRP</b> :</label>
+        <?php echo $nrp ?>
+    </p>
+    <p>
+        <label for="no_telp"><b>No. Telepon</b> :</label>
+        <?php echo $no_telp ?>
+    </p>
+    <p>
+        <label for="alamat"><b>Alamat</b> :</label>
+        <?php echo $alamat ?>
+    </p>
+    <p>
+        <label for="keperluan"><b>Keperluan</b> :</label>
+        <?php echo $keperluan ?>
+    </p>
+    <p>
+        <label for="tanggal"><b>Tanggal</b> :</label>
+        <?php echo $tanggal ?>
+    </p>
+    <?php echo $this->tag->form("/admin/confirmReservasiLab/".$id); ?>
+    <p>            
+        <label for="status"><b>Status</b> :</label>
+        <?php echo $form->render('status', ['required'=>True]); ?>
+    </p>
+        <p>
+            <?php echo $this->tag->submitButton(["Update!", 'class'=>'btn btn-primary']); echo $this->tag->linkTo("/admin/listPermohonanRuangan/".$this->session->isAdmin, " Kembali");?>
+        </p>
+
+
+</form>
+</div>
+        <?php if($this->flashSession->has('success')){ 
+            echo $this->flash->output();
+        }
+        ?>  
+
+<?php    
+}
+else {
+    echo "Who are you?";
+    header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-left: 50px;
+      text-align: left;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>

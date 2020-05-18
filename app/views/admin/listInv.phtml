@@ -1,0 +1,55 @@
+<?php
+if ($this->session->has('isAdmin')) {
+    // Retrieve its value
+    $id = implode("",$this->session->get('isAdmin'));
+    ?>
+    <h3>Inventaris</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="text-center thead-light">
+            <tr>
+                <th style="width:10%">Nomor</th>
+                <th style="width:25%">Nama</th>
+                <th style="width:25%">Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        if ($invens->count() > 0) {
+            foreach ($invens as $inven) { ?>
+            <tr>
+                <td class="counterCell"></td>
+                <td><?php echo $inven->nama_inv; ?></td>
+                <td><?php echo $inven->status_inv; ?></td>
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/".$id."/updateInv/".$inven->id_inv,
+                                "Edit",
+                                'class' => 'btn btn-success',
+                                'style' => 'width:110px'
+                            ]);
+                        ?>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/".$id."/deleteInv/".$inven->id_inv,
+                                "Delete",
+                                'class' => 'btn btn-danger',
+                                'style' => 'width:110px'
+                            ]);
+                        ?>
+                    </div>
+                </td>
+            </tr>
+        <?php } 
+        }else{ 
+            ?>
+            <tr>
+                <td colspan="5"><p class="text-center">Bersiihh, tidak ada barang~</p></td>
+            </tr>
+            <?php
+        } ?>
+        </tbody>
+    </table>
+<?php } ?>

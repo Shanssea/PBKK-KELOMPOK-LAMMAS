@@ -1,0 +1,65 @@
+<?php
+
+if ($this->session->has('nama_user')) {
+    // Retrieve its value
+    $nama = $this->session->nama_user;
+
+    echo "Welcome " . $nama . "!</br>";
+    if($this->session->isAdmin) {
+        echo $this->tag->linkTo(["/admin/dashboard", "Dashboard", 'class' => 'btn btn-info']);
+    }
+    echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);
+
+}
+else {
+    ?>
+    <div class="page-header">
+        <h1>Welcome to Lammas</h1>
+    </div>
+    <p>
+        Already have an account?</br>Login below!</br>
+        <?php
+        echo $this->tag->linkTo(
+            "/pengguna/loginpage",
+            "Login"
+        );?>
+    </p>
+    <p>Don't have one? <?php echo $this->tag->linkTo("signup", "Sign Up Here!");?></p>
+    <?php
+}
+
+
+
+
+
+
+<div class="container row-md-12">
+    <?php
+    if ($this->session->has('nama_user')) {
+        // Retrieve its value
+        $nama = $this->session->nama_user;
+
+        echo "Welcome " . $nama . "!</br>";
+        if($this->session->isAdmin) {
+            echo $this->tag->linkTo(["/admin/dashboard", "Dashboard", 'class' => 'btn btn-info']);
+        }
+        echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);
+
+    }
+    else {
+        ?>
+        <div class="page-header">
+            <h1>Welcome to Lammas</h1>
+        </div>
+        <p class="box col-md-4">
+            <img src="<?php echo $this->url->get('img/Lammas_Logo.png'); ?>" alt="Lammas Logo" height="200" width="200">
+            </br>
+            Already have an account?</br>
+            <?php
+            echo $this->tag->linkTo(["/pengguna/loginpage", "Login", 'class' => 'btn btn-info']);?></br></br>
+            Don't have one? <?php echo $this->tag->linkTo("signup", "Sign Up Here!");?>
+        </p>
+        <?php
+    }
+    ?>
+</div>

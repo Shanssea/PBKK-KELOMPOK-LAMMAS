@@ -1,0 +1,82 @@
+<?php
+
+if ($this->session->isAdmin) {
+
+    echo "<h5>List PC Lab<h5>";
+    echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard");
+    echo "</br>";
+    echo $this->tag->linkTo("/admin/tambahpcpage", "Tambah PC"); ?>
+
+    <div class="box col-md-10">
+    <?php foreach ($pcs as $pc) { ?>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nama PC</th>
+                <th>IP</th>
+                <th>Ukuran Hardisk</th>
+                <th>RAM</th>
+                <th>Processor</th>
+                <th>GPU</th>
+                <th>Status</th>
+                <th>Pengaturan</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="3">PC quantity: <?php echo $pcs->count(); ?></td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <?php 
+            $i=1;
+            foreach ($pcs as $pc) { ?>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $pc->nama_pc; ?></td>
+                    <td><?php echo $pc->ip; ?></td>
+                    <td><?php echo $pc->hdd; ?></td>
+                    <td><?php echo $pc->ram; ?></td>
+                    <td><?php echo $pc->processor; ?></td>
+                    <td><?php echo $pc->gpu; ?></td>
+                    <td><?php echo $pc->status_pc; ?></td>
+                    <td><?php echo $this->tag->linkTo(["/admin/editPC/".$pc->id_pc, "Edit", 'class'=>'btn btn-info']); echo " ".$this->tag->linkTo(["/admin/hapusPC/".$pc->id_pc, "Hapus", 'class'=>'btn btn-danger']); ?></td>
+                </tr>
+            <?php $i++; } ?>
+            </tbody>
+        </table>
+    </div>
+<?php    
+    }
+}
+else {
+    echo "You must login to see this page";
+    header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+.thead-blu {
+    background-color:#c7e8f3;
+}
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      /* padding-right: 80px; */
+      text-align: center;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
+      padding:20px 50px;
+      margin:auto;
+      float:none;
+}
+.page-header{
+      margin:auto;
+}
+</style>

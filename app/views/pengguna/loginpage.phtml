@@ -1,0 +1,48 @@
+<h2>Login using this form</h2>
+
+<div class="box col-md-4">
+    <?php echo $this->tag->form("pengguna/login"); ?>
+
+        <p>
+            <label for="nrp">NRP</label>
+            <?php echo $this->tag->textField("nrp"); ?>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <?php echo $this->tag->passwordField("password"); ?>
+        </p>
+
+        <p>
+            <?php 
+            echo $this->tag->submitButton(["Login", 'class'=>'btn btn-primary']) . " ";
+            echo $this->tag->linkTo("/", "Go back home");
+            ?>
+        </p>
+
+    </form>
+</div>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-right: 100px;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>

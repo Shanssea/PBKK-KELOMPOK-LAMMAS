@@ -1,0 +1,78 @@
+<?php
+
+if ($this->session->isAdmin) { ?>
+    <h2>Form tambah PC</h2>
+    <div class="box col-md-4">
+        <?php echo $this->tag->form("/admin/tambahpc"); ?>
+            
+            <p>
+                <label for="nama">Nama</label>
+                <?php echo $form->render('nama', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="ip">IP</label>
+                <?php echo $form->render('ip', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="hdd">Ukuran Hardisk</label>
+                <?php echo $form->render('hdd', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="ram">RAM</label>
+                <?php echo $form->render('ram', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="processor">Processor</label>
+                <?php echo $form->render('processor', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="gpu">GPU</label>
+                <?php echo $form->render('gpu', ['required'=>True]); ?>
+            </p>
+
+            <p>
+                <label for="status">Status</label>
+                <?php echo $form->render('status', ['required'=>True]); ?>
+            </p>
+            
+            <p>
+                <?php echo $this->tag->submitButton(["Tambah!", "class"=>"btn btn-primary"]); echo $this->tag->linkTo("/admin/listPC", " Kembali");?>
+            </p>
+        </form>
+    </div>
+
+<?php    
+}
+else {
+    echo "Who are you?";
+    header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-right: 100px;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>

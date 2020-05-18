@@ -1,0 +1,60 @@
+<?php
+
+if ($this->session->has('nama_user')) { ?>
+    <h2>Form Reservasi PC</h2>
+    <div class="box col-md-4">
+        <?php echo $this->tag->form("/mahasiswa/reservepc"); ?>
+            
+            <p>            
+                <label for="lab">Lab tujuan</label>
+                <?php echo $form->render('lab', ['required'=>True]); ?>
+            </p>
+            <p>            
+                <label for="jenis">Jenis permohonan</label>
+                <?php echo $form->render('jenis', ['required'=>True]); ?>
+            </p>
+            <p>
+                <label for="keperluan">Keperluan</label>
+                <?php echo $form->render('keperluan', ['required'=>True]); ?>
+            </p>        
+            <p>
+                <?php echo $this->tag->submitButton(["Request!",'class' => 'btn btn-primary']); echo $this->tag->linkTo("/mahasiswa/dashboard", " Kembali");?>
+
+            </p>
+        </form>
+    </div>
+        <?php if($this->flashSession->has('success')){ 
+            echo $this->flash->output();
+        }
+        ?>  
+
+<?php    
+}
+else {
+    echo "Who are you?";
+    header("refresh:2;url=/pengguna/loginpage");
+} ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-right: 100px;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>

@@ -1,0 +1,58 @@
+<h2>Sign up using this form</h2>
+<div class="box col-md-4">
+    <?php echo $this->tag->form("signup/register"); ?>   
+        <p>
+            <label for="nama">Nama</label>
+            <?php echo $form->render('nama'); ?>
+        </p>
+
+        <p>
+            <label for="nrp">NRP</label>
+            <?php echo $form->render('nrp'); ?>
+        </p>
+
+        <p>
+            <label for="no_telp">Nomor Telepon</label>
+            <?php echo $form->render('no_telp'); ?>
+        </p>
+
+        <p>
+            <label for="alamat">Alamat</label>
+            <?php echo $form->render('alamat'); ?>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <?php echo $form->render('password'); ?>
+        </p>
+
+        <p>
+            <?php echo $this->tag->submitButton(["Register", 'class'=>'btn btn-primary']); ?>
+            <?php echo $this->tag->linkTo("/", " Kembali"); ?>
+        </p>
+    </form>
+</div>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    text-align: center;
+    margin:auto;
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-right: 100px;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>
