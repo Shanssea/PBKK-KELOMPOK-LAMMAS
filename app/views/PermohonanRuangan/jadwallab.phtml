@@ -3,7 +3,7 @@ if ($this->session->has('nama_user')) {
 
     // echo "<h5>Jadwal Ruangan Lab " . $namalab . "<h5>";
     if(!$this->session->isAdmin) {   
-        echo $this->tag->linkTo("/mahasiswa/reservelabpage", "Reservasi lab")."</br>";
+        echo $this->tag->linkTo(["/mahasiswa/reservelabpage", "Reservasi lab", "class"=>"btn btn-primary"])."</br>";
     }
     /*if($this->session->isAdmin) {   
         echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard");
@@ -11,7 +11,7 @@ if ($this->session->has('nama_user')) {
         echo $this->tag->linkTo("/mahasiswa/jadwalpemakaianruangan", "Kembali");
     }*/ ?>
 
-    <div class="box col-md-10">
+    <!-- <div class="box col-md-10"> -->
         <?php foreach ($prs as $pr) { ?>
         <table class="table table-bordered table-hover">
             <thead class="thead-blu">
@@ -34,7 +34,7 @@ if ($this->session->has('nama_user')) {
             <?php $i++; } ?>
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
     <?php    
     }
 }

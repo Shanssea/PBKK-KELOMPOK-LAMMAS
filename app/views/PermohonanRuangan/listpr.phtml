@@ -11,7 +11,7 @@ if ($this->session->isAdmin) {
         echo $this->tag->linkTo("/mahasiswa/dashboard", "Kembali ke dashboard");
     } ?>
 
-    <div class="box col-md-10">
+    <!-- <div class="box col-md-10"> -->
         <?php foreach ($prs as $pr) { ?>
         <table class="table table-bordered table-hover">
             <thead class="thead-light">
@@ -48,7 +48,7 @@ if ($this->session->isAdmin) {
                         if($this->session->isAdmin)
                         {   
                             echo "<td>";
-                            echo $this->tag->linkTo("/admin/detailreservasilab/".$pr->id_plab, "Lihat detail");
+                            echo $this->tag->linkTo(["/admin/detailreservasilab/".$pr->id_plab, "Lihat detail", "class" => "btn btn-info"]);
                             echo "</td>";
                         }
                     ?>
@@ -56,7 +56,7 @@ if ($this->session->isAdmin) {
             <?php $i++; }?>
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
     <?php    
     }
 }

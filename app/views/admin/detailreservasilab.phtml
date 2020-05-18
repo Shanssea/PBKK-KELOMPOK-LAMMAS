@@ -2,7 +2,7 @@
 
 if ($this->session->isAdmin) { ?>
     <h2>Detail Reservasi Lab</h2>
-<div class="box col-md-4">
+<div class="box col-sm-6">
     <p>
         <label for="nama"><b>Nama</b> :</label>
         <?php echo $nama ?>
@@ -35,6 +35,15 @@ if ($this->session->isAdmin) { ?>
         <p>
             <?php echo $this->tag->submitButton(["Update!", 'class'=>'btn btn-primary']); echo $this->tag->linkTo("/admin/listPermohonanRuangan/".$this->session->isAdmin, " Kembali");?>
         </p>
+        <div class="d-flex justify-content-between" style="padding-top : 1pc">
+                <?php echo $this->tag->linkTo(
+                    [
+                        "/admin/listPermohonanRuangan/".$this->session->isAdmin,
+                        "Kembali",
+                        'class' => 'btn btn-primary',
+                    ]); ?>
+                <?php echo $this->tag->submitButton(["Ubah!", 'class'=>'btn btn-success']); ?>
+        </div>
 
 
 </form>
