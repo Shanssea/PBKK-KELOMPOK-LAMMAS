@@ -1,7 +1,8 @@
 <?php
 if ($this->session->has('isAdmin')) {
     // Retrieve its value
-    $id = implode("",$this->session->get('isAdmin'));
+    // $id = implode("",$this->session->get('isAdmin'));
+    $id = $this->session->get('isAdmin');
     ?>
     <h3>Inventaris</h3>
     <table class="table table-bordered table-hover">

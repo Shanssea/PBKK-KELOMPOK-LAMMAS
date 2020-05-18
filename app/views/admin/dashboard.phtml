@@ -1,22 +1,17 @@
 <?php
 if ($this->session->isAdmin) {
-    // Retrieve its value
-    $nama = $this->session->nama_user;
-    $lab = $this->session->isAdmin;
-    
-    echo "<h2>Welcome to Lammas, Admin " . $nama . "!</h2>";
     ?>
     <div class="container">
     <!-- <?php echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);?> -->
     <div>
     <div class="box col-md-6">
-        <h5 style="text-align:center;   ">Menu</h5>
+        <!-- <h5 style="text-align:center;   ">Menu</h5>
         <ul>
             <li><?php echo $this->tag->linkTo("/admin/listPC", "Melihat daftar PC"); ?>
             <li><?php echo $this->tag->linkTo("/admin/listReservasiPC/", "Mengatur reservasi PC"); ?>
             <li><?php echo $this->tag->linkTo("/admin/jadwalPemakaianRuangan/".$this->session->isAdmin, "Melihat jadwal pemakaian lab"); ?>
             <li><?php echo $this->tag->linkTo("/admin/listPermohonanRuangan/".$this->session->isAdmin, "Mengonfirmasi peminjaman lab"); ?>
-        </ul>
+        </ul> -->
     </div>
 <?php    
 }

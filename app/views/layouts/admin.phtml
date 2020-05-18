@@ -5,15 +5,15 @@
             <h6>Welcome,</h6>
             <!-- <h3><?php echo implode("",$this->session->get('nama')); ?></h3> -->
             <!-- <h6><?php echo implode("",$this->session->get('nrp')); ?></h6> -->
-            <h5><?php echo $this->session->get('nama_user'); ?></h5>
-            <h3><?php echo $this->session->get('nrp'); ?></h3>
+            <h5><?php echo "Admin "; echo $this->session->get('nama_user'); ?></h5>
+            <h6><?php echo $this->session->get('nrp'); ?></h6>
         </div>
 
         <ul class="list-unstyled components">
             <li>
             <?php
                 echo $this->tag->linkTo([
-                    "/admin/dashboard".$id,
+                    "/admin/dashboard",
                     "Beranda",
                 ]);
             ?>
@@ -24,7 +24,8 @@
                     <li>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$id."/listInv",
+                                "/admin/".$this->session->isAdmin."/listInv",
+                                // "/admin/listInv/".$id,
                                 "List",
                             ]);
                         ?>
@@ -32,7 +33,7 @@
                     <li>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$id."/createInv",
+                                "/admin/".$this->session->isAdmin."/createInv",
                                 "Tambah",
                             ]);
                         ?>
@@ -114,3 +115,17 @@
         <?php echo $this->getContent(); ?>
     </div>
 </div>
+
+<style>
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      padding-right: 100px;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin:auto;
+      float:none;
+}
+</style>

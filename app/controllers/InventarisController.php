@@ -62,6 +62,7 @@ class InventarisController extends ControllerBase
             [
                 'nama_inv' => $inven->nama_inv,
                 'status_inv' => $inven->status_inv,
+                'pagetitle' => "Edit Inventaris"
             ]
         );
 

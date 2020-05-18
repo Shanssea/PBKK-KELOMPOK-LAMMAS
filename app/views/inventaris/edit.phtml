@@ -1,39 +1,41 @@
-<?php
-if ($this->session->has('isAdmin')) {
-    $id = implode("",$this->session->get('isAdmin'));
+<div class="box col-sm-6">
+    <?php
+    if ($this->session->has('isAdmin')) {
+        $id = $this->session->get('isAdmin');
+        ?>
+        <!-- <h2>Edit Inventaris</h2> -->
+
+        <?php echo $this->tag->form("inventaris/update/".$id."/".$invenId); ?>
+            
+            <p>
+                <label for="nama">Nama</label>
+                <?php echo $this->tag->textField(['nama', 'value' => $nama_inv]); ?>
+            </p>
+
+            <p>
+                <label for="status">Status</label>
+                <?php echo $this->tag->textField(['status', 'value' => $status_inv]); ?>
+            </p>
+
+            <div class="d-flex justify-content-between" style="padding-top : 200px">
+                <!-- <?php echo $this->tag->linkTo(
+                    [
+                        "/admin/".$id."/listInv",
+                        "Kembali",
+                        'class' => 'btn btn-primary',
+                    ]); ?> -->
+                <?php echo $this->tag->submitButton(
+                    [
+                        "Submit",
+                        'class' => 'btn btn-success',
+                    ]); ?>
+            </div>
+
+        </form>
+    <?php
+    }else{
+        echo "Sorii, hanya admin yang boleh mengakses halaman ini :)";
+        header( "refresh:2;url=/" );
+    }
     ?>
-    <h2>Edit Inventaris</h2>
-
-    <?php echo $this->tag->form("inventaris/update/".$id."/".$invenId); ?>
-        
-        <p>
-            <label for="nama">Nama</label>
-            <?php echo $this->tag->textField(['nama', 'value' => $nama_inv]); ?>
-        </p>
-
-        <p>
-            <label for="status">Status</label>
-            <?php echo $this->tag->textField(['status', 'value' => $status_inv]); ?>
-        </p>
-
-        <div class="d-flex justify-content-between" style="padding-top : 200px">
-            <?php echo $this->tag->linkTo(
-                [
-                    "/admin/".$id."/listInv",
-                    "Kembali",
-                    'class' => 'btn btn-primary',
-                ]); ?>
-            <?php echo $this->tag->submitButton(
-                [
-                    "Submit",
-                    'class' => 'btn btn-success',
-                ]); ?>
-        </div>
-
-    </form>
-<?php
-}else{
-    echo "Sorii, hanya admin yang boleh mengakses halaman ini :)";
-    header( "refresh:2;url=/" );
-}
-?>
+</div>

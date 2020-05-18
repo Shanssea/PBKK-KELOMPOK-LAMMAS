@@ -11,10 +11,12 @@ class AdminController extends \Phalcon\Mvc\Controller
      * DASHBOARD
      */
 
-    public function indexAction($id)
+    // public function indexAction($id)
+    public function indexAction()
     {
         // $this->view->setTemplateAfter('admin');
-        $this->view->id->$id;
+        $id = $this->session->isAdmin;
+        $this->view->id = $id;
         $status = "unverified";
         $this->view->pinjInvs = ListPinjamInv::find(
             [
@@ -29,7 +31,7 @@ class AdminController extends \Phalcon\Mvc\Controller
 
     public function dashboardAction()
     {
-
+        $this->view->pagetitle = "Dashboard";
     }
 
     /**
@@ -270,7 +272,9 @@ class AdminController extends \Phalcon\Mvc\Controller
     }
 
     public function listInvAction($id)
+    // public function listInvAction()
     {
+        // $id = $this->session->isAdmin;
         $this->view->id->$id;
         $conditions = ['id' => $id];
         $this->view->invens = Inventaris::find(
