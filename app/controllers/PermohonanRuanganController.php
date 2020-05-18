@@ -33,7 +33,14 @@ class PermohonanRuanganController extends \Phalcon\Mvc\Controller
                     'columns'       => 'nama_lab'
                 ]
             );
-            $this->view->setTemplateAfter('admin');
+            if ($this->session->isAdmin > 0)
+            {
+                $this->view->setTemplateAfter('admin');
+            }
+            elseif ($this->session->isAdmin == 0)
+            {
+                $this->view->setTemplateAfter('mahasiswa');
+            }
             $this->view->prs = $prs;
             $this->view->namalab = $infolab->nama_lab;
         }

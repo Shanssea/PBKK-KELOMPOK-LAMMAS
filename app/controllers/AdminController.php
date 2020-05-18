@@ -327,6 +327,7 @@ class AdminController extends \Phalcon\Mvc\Controller
     {
         // $id = $this->session->isAdmin;
         $this->view->id->$id;
+        $this->view->pagetitle = "Inventaris";
         $conditions = ['id' => $id];
         $this->view->invens = Inventaris::find(
             [

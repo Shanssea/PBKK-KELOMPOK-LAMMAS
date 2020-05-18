@@ -16,14 +16,14 @@
                 <label for="status" style="width: 150px">Status</label>
                 <?php echo $this->tag->textField("status"); ?>
             </p>
-            <!-- <div class="d-flex justify-content-between" style="padding-top : 200px"> -->
-            <div class="d-flex justify-content-right" style="padding-top : 2pc">
-                <!-- <?php echo $this->tag->linkTo(
+            <div class="d-flex justify-content-between" style="padding-top : 2pc">
+            <!-- <div class="d-flex justify-content-right" style="padding-top : 2pc"> -->
+                <?php echo $this->tag->linkTo(
                     [
-                        "/admin/".$id,
+                        "/admin/".$this->session->isAdmin."/listInv",
                         "Kembali",
                         'class' => 'btn btn-primary',
-                    ]); ?> -->
+                    ]); ?>
                 <?php echo $this->tag->submitButton(
                     [
                         "Submit",

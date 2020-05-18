@@ -1,8 +1,8 @@
 <?php
-if($this->session->has('mhs')){
-    $id = $this->session->get('id');
+if($this->session->has('nama_user')){
+    // $id = $this->session->get('user_id');
     ?>
-    <h3>Daftar Inventaris</h3>
+    <!-- <h3>Daftar Inventaris</h3> -->
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
             <tr>
@@ -24,13 +24,14 @@ if($this->session->has('mhs')){
                     <?php
                     if ($inven->status == "unavailable"){
                         echo $this->tag->linkTo([
-                            "/mahasiswa/". implode("",$id) . "/listInv",
+                            // "/mahasiswa/". implode("",$id) . "/listInv",
+                            "/mahasiswa/listInv/" . $id,
                             "Request",
                             'class' => 'btn btn-secondary btn-block'
                         ]);
                     }else{
                         echo $this->tag->linkTo([
-                            "/mahasiswa/requestInv/". implode("",$id) . "/" . $inven->id,
+                            "/mahasiswa/requestInv/". $id . "/" . $inven->id,
                             "Request",
                             'class' => 'btn btn-primary btn-block'
                         ]);

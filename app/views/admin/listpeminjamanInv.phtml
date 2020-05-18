@@ -1,7 +1,7 @@
 <?php
 if ($this->session->has('isAdmin')) {
     $name = $this->session->get('nama');
-    $id = implode("",$this->session->get('isAdmin'));
+    $id = $this->session->get('isAdmin');
     ?>
     <!-- <h3>Barang Pinjaman</h3> -->
     <table class="table table-bordered table-hover">
@@ -10,6 +10,7 @@ if ($this->session->has('isAdmin')) {
             <th>Nomor</th>
             <th>Nama</th>
             <th>Nama Barang</th>
+            <th>Keperluan</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -23,6 +24,7 @@ if ($this->session->has('isAdmin')) {
             <td><?php echo $pinjInv->nama; ?></td>
             <td><?php echo $pinjInv->nama_barang; ?></td>
             <td><?php echo $pinjInv->status; ?></td>
+            <td><?php echo $pinjInv->keperluan; ?></td>
             <td>
                 <div class="d-flex justify-content-around">
                     <?php
@@ -46,7 +48,7 @@ if ($this->session->has('isAdmin')) {
     }else{ 
         ?>
         <tr>
-            <td colspan="5"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
+            <td colspan="6"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
         </tr>
         <?php
     } ?>

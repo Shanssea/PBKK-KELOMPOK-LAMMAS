@@ -17,13 +17,13 @@
                 <?php echo $this->tag->textField(['status', 'value' => $status_inv]); ?>
             </p>
 
-            <div class="d-flex justify-content-between" style="padding-top : 200px">
-                <!-- <?php echo $this->tag->linkTo(
+            <div class="d-flex justify-content-between" style="padding-top : 2pc">
+                <?php echo $this->tag->linkTo(
                     [
                         "/admin/".$id."/listInv",
                         "Kembali",
                         'class' => 'btn btn-primary',
-                    ]); ?> -->
+                    ]); ?>
                 <?php echo $this->tag->submitButton(
                     [
                         "Submit",
