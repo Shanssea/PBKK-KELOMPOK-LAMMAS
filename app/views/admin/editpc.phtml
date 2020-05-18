@@ -40,9 +40,15 @@ if ($this->session->isAdmin) { ?>
                 <?php echo $this->tag->textField(['status', 'value' => $status]); ?>
             </p>
             
-            <p>
-                <?php echo $this->tag->submitButton(["Ubah!", 'class'=>'btn btn-primary']); echo $this->tag->linkTo("/admin/listPC/", " Kembali");?>
-            </p>
+            <div class="d-flex justify-content-between" style="padding-top : 1pc">
+                <?php echo $this->tag->linkTo(
+                    [
+                        "/admin/listPC/",
+                        "Kembali",
+                        'class' => 'btn btn-primary',
+                    ]); ?>
+                <?php echo $this->tag->submitButton(["Ubah!", 'class'=>'btn btn-success']); ?>
+            </div>
     </form>
 </div>
 

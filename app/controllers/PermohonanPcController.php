@@ -17,15 +17,20 @@ class PermohonanPcController extends \Phalcon\Mvc\Controller
                 $dataSent = $this->request->getPost();
 
                 $ppc = new PermohonanPc();
-                $ppc->lab = $dataSent["lab"];
+                $ppc->id_lab = $dataSent["lab"];
                 $ppc->jenis = $dataSent["jenis"];
                 $ppc->keperluan = $dataSent["keperluan"];
                 $ppc->id_user = $this->session->user_id;
                 $ppc->status = "Menunggu persetujuan admin";
                 $ppc->tanggal = date('Y-m-d H:i:s');
                 
-                $ppc->save();
-                $this->response->redirect('/mahasiswa/dashboard');
+                $success = $ppc->save();
+                if($success){
+                    echo "Berhasil";
+                    $this->response->redirect('/mahasiswa/dashboard');
+                } else {
+                    echo "Gagal menambah permohonan";
+                }
             }
         }
         else {
@@ -72,7 +77,7 @@ class PermohonanPcController extends \Phalcon\Mvc\Controller
                         'bind'       => ['id' => $id,],
                     ]
                 );
-                if($ppc->lab == $this->session->isAdmin) {
+                if($ppc->id_lab == $this->session->isAdmin) {
                     $dataSent = $this->request->getPost();
 
                     $ppc->status = $dataSent["status"];
@@ -92,7 +97,7 @@ class PermohonanPcController extends \Phalcon\Mvc\Controller
                     }
                 } else {
                     echo "This is not your lab's PermohonanPC, dude!";
-                    header("refresh:2;url=/admin/listPC");
+                    header("refresh:2;url=/admin/listReservasiPC/");
                 }
             }
         }

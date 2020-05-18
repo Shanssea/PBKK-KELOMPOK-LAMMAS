@@ -173,7 +173,7 @@ class AdminController extends \Phalcon\Mvc\Controller
                 ],
             ));
             
-            if($ppc->lab == $this->session->isAdmin) {
+            if($ppc->id_lab == $this->session->isAdmin) {
                 $this->view->setVars(
                     [
                         'tanggal'   => $ppc->tanggal,
