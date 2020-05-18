@@ -12,7 +12,7 @@ if ($this->session->isAdmin) {
                         <h1 class="card-title pricing-card-title"><?php echo $jPinjInvs; ?></h1>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/listInv/".$this->session->isAdmin,
+                                "/admin/listpeminjamanInv/".$this->session->isAdmin,
                                 "Pergi Ke Halaman",
                                 'class' => 'btn btn-lg btn-outline-primary'
                             ]);
@@ -27,7 +27,7 @@ if ($this->session->isAdmin) {
                         <h1 class="card-title pricing-card-title"><?php echo $jPinjPcs; ?></h1>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/listPc/",
+                                "/admin/listReservasiPc/",
                                 "Pergi Ke Halaman",
                                 'class' => 'btn btn-lg btn-outline-primary'
                             ]);

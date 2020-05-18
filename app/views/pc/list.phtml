@@ -7,7 +7,7 @@ if ($this->session->isAdmin) {
     // echo "</br>";
     echo $this->tag->linkTo(["/admin/tambahpcpage", "Tambah PC", "class"=>"btn btn-primary"]); ?>
 
-    <div class="box col-md-12 align-center">
+    <!-- <div class="box col-md-12 align-center"> -->
     <?php foreach ($pcs as $pc) { ?>
         <table class="table table-bordered table-hover">
             <thead class="thead-light">
@@ -46,7 +46,7 @@ if ($this->session->isAdmin) {
             <?php $i++; } ?>
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
 <?php    
     }
 }

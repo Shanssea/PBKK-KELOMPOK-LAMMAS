@@ -79,7 +79,7 @@ class InventarisController extends ControllerBase
             $success = $inven->save();
 
             if ($success) {
-            return $this->response->redirect("/admin/".$id."/listInv");
+            return $this->response->redirect("/admin/listInv/".$id);
             } else {
                 echo "Oops, seems like the following issues were encountered: ";
     
@@ -105,7 +105,7 @@ class InventarisController extends ControllerBase
         $success = $inven->delete();
 
         if ($success) {
-            return $this->response->redirect("/admin/".$id."/listInv");
+            return $this->response->redirect("/admin/listInv/".$id);
         } else {
             echo "Oops, seems like the following issues were encountered: ";
 

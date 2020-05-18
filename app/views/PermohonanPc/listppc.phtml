@@ -1,10 +1,10 @@
 <?php
 if ($this->session->isAdmin) {
 
-echo "<h5>List Reservasi PC Lab<h5>";
-echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard"); ?>
+// echo "<h5>List Reservasi PC Lab<h5>";
+echo "<h5>". $pagetitle. " " . $namalab . "<h5>"; ?>
 
-    <div class="box col-md-10">
+    <!-- <div class="box col-md-10"> -->
         <?php foreach ($ppcs as $ppc) { ?>
         <table class="table table-bordered table-hover">
             <thead class="thead-blu">
@@ -25,12 +25,14 @@ echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard"); ?>
                     <td><?php echo $ppc->jenis; ?></td>
                     <td><?php echo $ppc->keperluan; ?></td>
                     <td><?php echo $ppc->status; ?></td>
-                    <td><?php echo $this->tag->linkTo("/admin/detailreservasipc/".$ppc->id_ppc, "Lihat detail"); ?></td>
+                    <td>
+                        <?php echo $this->tag->linkTo(["/admin/detailreservasipc/".$ppc->id_ppc, "Lihat detail", "class" => "btn btn-info"]); ?>
+                    </td>
                 </tr>
             <?php $i++; } ?>
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
 <?php    
 }
 }

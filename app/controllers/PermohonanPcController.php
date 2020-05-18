@@ -39,13 +39,25 @@ class PermohonanPcController extends \Phalcon\Mvc\Controller
         if ($this->session->isAdmin) {
             $ppcs = PermohonanPc::find(   // Nyari permohonan pc berdasar Lab dari admin yang sedang login
                 [
-                    'conditions' => 'lab = :lab:',
+                    'conditions' => 'id_lab = :lab:',
                     'bind'       => [
                         'lab' => $lab,
                     ],
                     'order'     => 'status, tanggal DESC'
                 ]
             );
+            $infolab = Laboratorium::findFirst(
+                [
+                    'conditions'    => 'id_lab = :lab:',
+                    'bind'          => [
+                        'lab' => $lab,
+                    ],
+                    'columns'       => 'nama_lab'
+                ]
+            );
+            $this->view->setTemplateAfter('admin');
+            $this->view->pagetitle = "List Reservasi PC Lab";
+            $this->view->namalab = $infolab->nama_lab;
             $this->view->ppcs = $ppcs;
         }
     }
