@@ -1,17 +1,56 @@
 <?php
 if ($this->session->isAdmin) {
     ?>
-    <div class="container">
-    <!-- <?php echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);?> -->
-    <div>
-    <div class="box col-md-6">
-        <!-- <h5 style="text-align:center;   ">Menu</h5>
-        <ul>
-            <li><?php echo $this->tag->linkTo("/admin/listPC", "Melihat daftar PC"); ?>
-            <li><?php echo $this->tag->linkTo("/admin/listReservasiPC/", "Mengatur reservasi PC"); ?>
-            <li><?php echo $this->tag->linkTo("/admin/jadwalPemakaianRuangan/".$this->session->isAdmin, "Melihat jadwal pemakaian lab"); ?>
-            <li><?php echo $this->tag->linkTo("/admin/listPermohonanRuangan/".$this->session->isAdmin, "Mengonfirmasi peminjaman lab"); ?>
-        </ul> -->
+    <div class="box col-md-15 text-center">
+        <div class="container" style="margin-left: 50px">
+            <div class="card-deck mb-4 text-center">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Pinjam Inventaris</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><?php echo $jPinjInvs; ?></h1>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listInv/".$this->session->isAdmin,
+                                "Pergi Ke Halaman",
+                                'class' => 'btn btn-lg btn-outline-primary'
+                            ]);
+                        ?>
+                    </div>
+                </div>
+                <div class="card mb-5 box-shadow">
+                <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Reservasi PC</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><?php echo $jPinjPcs; ?></h1>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listPc/",
+                                "Pergi Ke Halaman",
+                                'class' => 'btn btn-lg btn-outline-primary'
+                            ]);
+                        ?>
+                    </div>
+                </div>
+                <div class="card mb-6 box-shadow">
+                <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Reservasi Ruangan</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><?php echo $jPinjLabs; ?></h1>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listPermohonanRuangan/".$this->session->isAdmin,
+                                "Pergi Ke Halaman",
+                                'class' => 'btn btn-lg btn-outline-primary'
+                            ]);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <?php    
 }

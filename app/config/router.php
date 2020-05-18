@@ -58,7 +58,7 @@ $router->add(
 );
 
 $router->add(
-    '/admin/([0-9])/:params/listInv',
+    '/admin/listInv/([0-9])/:params',
     [
         'controller' => 'admin',
         'action' => 'listInv',

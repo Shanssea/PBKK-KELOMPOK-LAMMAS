@@ -19,7 +19,43 @@ class AdminController extends \Phalcon\Mvc\Controller
 
     public function dashboardAction()
     {
+        
+        $id = $this->session->isAdmin;
         $this->view->pagetitle = "Dashboard";
+        
+        // untuk lihat jumlah peminjaman inv labnya
+        $pinjInvs = PinjamInv::find(
+            [
+                'id_lab = (:id:)',
+                'bind' => [
+                    'id' => $id,
+                ]
+            ]
+        );
+
+        // untuk lihat jumlah peminjaman pc labnya
+        $pinjPcs = PermohonanPc::find(
+            [
+                'id_lab = (:id:)',
+                'bind' => [
+                    'id' => $id,
+                ]
+            ]
+        );
+
+        // untuk lihat jumlah peminjaman ruangan labnya
+        $pinjLabs = PermohonanRuangan::find(
+            [
+                'id_lab = (:id:)',
+                'bind' => [
+                    'id' => $id,
+                ]
+            ]
+        );
+
+        $this->view->jPinjInvs = count($pinjInvs);
+        $this->view->jPinjPcs = count($pinjPcs);
+        $this->view->jPinjLabs = count($pinjLabs);
     }
 
     /**
