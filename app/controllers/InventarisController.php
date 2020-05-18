@@ -126,7 +126,7 @@ class InventarisController extends ControllerBase
             'bind' => $conditions1,
         ]);
 
-        $pinjInv->STATUS = 'approved';
+        $pinjInv->status = 'approved';
 
         $conditions2 = ['id' => $pinjInv->id_inv];
         $inven = Inventaris::findFirst([
@@ -162,7 +162,7 @@ class InventarisController extends ControllerBase
             'bind' => $conditions,
         ]);
 
-        $pinjInv->STATUS = "not approved";
+        $pinjInv->status = "not approved";
 
         $success = $pinjInv->save();
 

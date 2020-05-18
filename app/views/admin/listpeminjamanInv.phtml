@@ -29,13 +29,13 @@ if ($this->session->has('isAdmin')) {
                 <div class="d-flex justify-content-around">
                     <?php
                         echo $this->tag->linkTo([
-                            "/admin/".$id."/confirmInv/".$pinjInv->id,
+                            "/admin/confirmInv/".$id."/".$pinjInv->id,
                             "Konfirmasi",
                             'class' => 'btn btn-success',
                             'style' => 'width:110px'
                         ]);
                         echo $this->tag->linkTo([
-                            "/admin/".$id."/declineInv/".$pinjInv->id,
+                            "/admin/declineInv/".$id."/".$pinjInv->id,
                             "Tolak",
                             'class' => 'btn btn-danger',
                             'style' => 'width:110px'

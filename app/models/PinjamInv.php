@@ -43,7 +43,7 @@ class PinjamInv extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $STATUS;
+    public $status;
 
 
     /**

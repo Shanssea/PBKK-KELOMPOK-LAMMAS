@@ -24,21 +24,25 @@ class AdminController extends \Phalcon\Mvc\Controller
         $this->view->pagetitle = "Dashboard";
         
         // untuk lihat jumlah peminjaman inv labnya
+        $statusInv = "unverified";
         $pinjInvs = PinjamInv::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $statusInv
                 ]
             ]
         );
 
         // untuk lihat jumlah peminjaman pc labnya
+        $status = "Menunggu Persetujuan Admin";
         $pinjPcs = PermohonanPc::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $status
                 ]
             ]
         );
@@ -46,9 +50,10 @@ class AdminController extends \Phalcon\Mvc\Controller
         // untuk lihat jumlah peminjaman ruangan labnya
         $pinjLabs = PermohonanRuangan::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $status
                 ]
             ]
         );
@@ -118,6 +123,7 @@ class AdminController extends \Phalcon\Mvc\Controller
                         'processor' => $pc->processor,
                         'gpu'       => $pc->gpu,
                         'status'    => $pc->status_pc,
+                        'pagetitle' => "Form Edit PC"
                     ]
                 );
             } else {
@@ -256,7 +262,8 @@ class AdminController extends \Phalcon\Mvc\Controller
                         'no_telp'   => $pemohon->no_telp,
                         'alamat'    => $pemohon->alamat,
                         'keperluan' => $pr->keperluan,
-                        'form'      => $form
+                        'form'      => $form,
+                        'pagetitle' => "Detail Reservasi Lab"
                     ]
                 );
 
