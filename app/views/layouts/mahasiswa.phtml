@@ -3,15 +3,17 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h6>Welcome,</h6>
-            <h3><?php echo implode("",$this->session->get('nama')); ?></h3>
-            <h6><?php echo implode("",$this->session->get('nrp')); ?></h6>
+            <!-- <h3><?php //echo implode("",$this->session->get('nama')); ?></h3>
+            <h6><?php //echo implode("",$this->session->get('nrp')); ?></h6> -->
+            <h5><?php echo $this->session->get('nama_user'); ?></h5>
+            <h6><?php echo $this->session->get('nrp'); ?></h6>
         </div>
 
         <ul class="list-unstyled components">
             <li>
             <?php
                 echo $this->tag->linkTo([
-                    "/mahasiswa/".$id,
+                    "/mahasiswa/dashboard".$id,
                     "Beranda",
                 ]);
             ?>
@@ -24,6 +26,36 @@
                 ]);
             ?>
             </li>
+            <li>
+            <?php
+                echo $this->tag->linkTo([
+                    "/mahasiswa/reservasipcpage",
+                    "Pinjam PC",
+                ]);
+            ?>
+            </li>
+            <li class="active">
+                <a href="#ruanganSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ruangan</a>
+                <ul class="collapse list-unstyled" id="ruanganSubmenu">
+                    <li>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/mahasiswa/jadwalpemakaianruangan",
+                                "Jadwal",
+                            ]);
+                        ?>
+                    </li>
+                    <li class="active">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/mahasiswa/jadwalpemakaianruangan",
+                                "Pinjam Ruangan",
+                            ]);
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            
         </ul>
 
         <ul class="list-unstyled CTAs">
@@ -43,6 +75,7 @@
                     <i class="fas fa-align-left"></i>
                     <span>Menu</span>
                 </button>
+                <h3><?php echo $pagetitle; ?></h3>
             </div>
         </nav>
 

@@ -1,8 +1,8 @@
 <?php
 
 if ($this->session->isAdmin) { ?>
-    <h2>Form tambah PC</h2>
-    <div class="box col-md-4">
+    <!-- <h2>Form tambah PC</h2> -->
+    <div class="box col-sm-6">
         <?php echo $this->tag->form("/admin/tambahpc"); ?>
             
             <p>
@@ -41,7 +41,8 @@ if ($this->session->isAdmin) { ?>
             </p>
             
             <p>
-                <?php echo $this->tag->submitButton(["Tambah!", "class"=>"btn btn-primary"]); echo $this->tag->linkTo("/admin/listPC", " Kembali");?>
+                <?php echo $this->tag->linkTo(["/admin/listPC", "Kembali", "class"=>"btn btn-warning", "style"=>"margin-right: 1pc;"]);
+                      echo $this->tag->submitButton(["Tambah!", "class"=>"btn btn-primary"]);?>
             </p>
         </form>
     </div>

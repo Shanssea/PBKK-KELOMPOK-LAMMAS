@@ -1,14 +1,15 @@
 <?php
 if ($this->session->has('nama_user')) {
 
-    echo "<h5>Jadwal Ruangan Lab " . $namalab . "<h5>";
+    // echo "<h5>Jadwal Ruangan Lab " . $namalab . "<h5>";
+    echo "<h5>". $pagetitle. " " . $namalab . "<h5>";
     if(!$this->session->isAdmin) {   
         echo $this->tag->linkTo("/mahasiswa/reservelabpage", "Reservasi lab")."</br>";
     }
     if($this->session->isAdmin) {   
         echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard");
     } else {
-        echo $this->tag->linkTo("/mahasiswa/dashboard", "Kembali ke dashboard");
+        echo $this->tag->linkTo("/mahasiswa/jadwalpemakaianruangan", "Kembali");
     } ?>
 
     <div class="box col-md-10">

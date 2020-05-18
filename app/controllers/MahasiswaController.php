@@ -28,7 +28,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
     
     public function dashboardAction()
     {
-
+        $this->view->pagetitle = "Dashboard";
     }
 
     /**
@@ -60,6 +60,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
         ));
         $form->add(new TextArea('keperluan'));
         $this->view->form = $form;
+        $this->view->pagetitle = "Form Reservasi PC";
         $this->flash->success('Success message');
     }
     
@@ -85,6 +86,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
                 ]
             ));
             $this->view->form = $form;
+            $this->view->pagetitle = "Lihat Jadwal Lab";
         }
         else {
             echo "You must login to see this page";
@@ -99,7 +101,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
             if($this->request->isPost())
             {
                 $dataSent = $this->request->getPost();
-
+                $this->view->pagetitle = "Jadwal Ruangan Lab";
                 return $this->dispatcher->forward(array( 
                     'controller' => 'PermohonanRuangan',
                     'action' => 'jadwallab',

@@ -56,6 +56,7 @@ class AdminController extends \Phalcon\Mvc\Controller
         $form->add(new Text('gpu'));
         $form->add(new Text('status'));
         $this->view->form = $form;
+        $this->view->pagetitle = "Form Tambah PC";
     }
 
     public function tambahPcAction()

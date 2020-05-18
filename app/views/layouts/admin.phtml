@@ -5,7 +5,7 @@
             <h6>Welcome,</h6>
             <!-- <h3><?php echo implode("",$this->session->get('nama')); ?></h3> -->
             <!-- <h6><?php echo implode("",$this->session->get('nrp')); ?></h6> -->
-            <h3><?php echo $this->session->get('nama_user'); ?></h3>
+            <h5><?php echo $this->session->get('nama_user'); ?></h5>
             <h3><?php echo $this->session->get('nrp'); ?></h3>
         </div>
 
@@ -90,7 +90,6 @@
                     </li>
                 </ul>
             </li>
-            
         </ul>
 
         <ul class="list-unstyled CTAs">
@@ -102,14 +101,13 @@
 
     <!-- Page Content  -->
     <div id="content">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>Menu</span>
                 </button>
+                <h3><?php echo $pagetitle; ?></h3>
             </div>
         </nav>
 
