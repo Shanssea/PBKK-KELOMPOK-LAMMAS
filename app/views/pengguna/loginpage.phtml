@@ -1,48 +1,35 @@
-<h2>Login using this form</h2>
+<div style="margin-top: 10%">
+    <div class="container" style="margin:auto; width:350px">
+        <h4 class="text-center" style="padding-bottom: 20px">
+            <img src="img/Lammas_Logo.png" style="width: 50px">
+            Lammas
+        </h4>
+        <?php echo $this->tag->form("pengguna/login"); ?>
 
-<div class="box col-md-4">
-    <?php echo $this->tag->form("pengguna/login"); ?>
+            <p>
+                <label for="nrp" style="width: 100px">NRP</label>
+                <?php echo $this->tag->textField(["nrp", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="nrp">NRP</label>
-            <?php echo $this->tag->textField("nrp"); ?>
-        </p>
+            <p>
+                <label for="password" style="width: 100px">Password</label>
+                <?php echo $this->tag->passwordField(["password", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="password">Password</label>
-            <?php echo $this->tag->passwordField("password"); ?>
-        </p>
+            <p>
+                <?php echo $this->tag->submitButton([
+                    "Login", 
+                    'class' => 'btn btn-primary btn-lg btn-block',
+                    'style' => 'width: 300px'
+                ]); ?>
+            </p>
 
-        <p>
-            <?php 
-            echo $this->tag->submitButton(["Login", 'class'=>'btn btn-primary']) . " ";
-            echo $this->tag->linkTo("/", "Go back home");
-            ?>
-        </p>
-
-    </form>
+        </form>
+        <p class="text-center">Don't have one? <?php echo $this->tag->linkTo(
+            [
+                "signup", 
+                "Sign Up Here!",
+                'style' => 'color:red' 
+            ]);?></p>
+    </div>
 </div>
-
-<style>
-body {
-    /* background-color: #E5E9EC; */
-    text-align: center;
-    margin:auto;
-}
-
-.box{
-      background-color: white;
-      box-shadow: 0px 10px 8px #888888;
-      border-radius: 15px;
-      padding-right: 100px;
-      text-align: right;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      margin:auto;
-      float:none;
-}
-
-.page-header{
-      margin:auto;
-}
-</style>

@@ -1,58 +1,43 @@
-<h2>Sign up using this form</h2>
-<div class="box col-md-4">
-    <?php echo $this->tag->form("signup/register"); ?>   
-        <p>
-            <label for="nama">Nama</label>
-            <?php echo $form->render('nama'); ?>
-        </p>
+<div style="margin-top: 5%">
+    <div class="container" style="margin:auto; width:350px">
+    <h4 class="text-center" style="padding-bottom: 20px">Register</h4>
+        <?php echo $this->tag->form("signup/register"); ?>
+            <p>
+                <label for="nama" style="width: 100px">Nama</label>
+                <?php echo $this->tag->textField(["nama", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="nrp">NRP</label>
-            <?php echo $form->render('nrp'); ?>
-        </p>
+            <p>
+                <label for="nrp" style="width: 100px">NRP</label>
+                <?php echo $this->tag->textField(["nrp", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="no_telp">Nomor Telepon</label>
-            <?php echo $form->render('no_telp'); ?>
-        </p>
+            <p>
+                <label for="no_telp" style="width: 200px">Nomor Telepon</label>
+                <?php echo $this->tag->textField(["no_telp", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="alamat">Alamat</label>
-            <?php echo $form->render('alamat'); ?>
-        </p>
+            <p>
+                <label for="alamat" style="width: 100px">Alamat</label>
+                <?php echo $this->tag->textField(["alamat", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <label for="password">Password</label>
-            <?php echo $form->render('password'); ?>
-        </p>
+            <p>
+                <label for="password" style="width: 100px">Password</label>
+                <?php echo $this->tag->passwordField(["password", 'style' => 'width:300px']); ?>
+            </p>
 
-        <p>
-            <?php echo $this->tag->submitButton(["Register", 'class'=>'btn btn-primary']); ?>
-            <?php echo $this->tag->linkTo("/", " Kembali"); ?>
-        </p>
-    </form>
+            <p>
+                <?php echo $this->tag->submitButton(
+                    [
+                        "Register",
+                        'class' => 'btn btn-primary btn-lg btn-block',
+                        'style' => 'width:300px'
+                    ]); ?>
+            </p>
+
+        </form>
+    </div>
 </div>
+    
 
-<style>
-body {
-    /* background-color: #E5E9EC; */
-    text-align: center;
-    margin:auto;
-}
-
-.box{
-      background-color: white;
-      box-shadow: 0px 10px 8px #888888;
-      border-radius: 15px;
-      padding-right: 100px;
-      text-align: right;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      margin:auto;
-      float:none;
-}
-
-.page-header{
-      margin:auto;
-}
-</style>
