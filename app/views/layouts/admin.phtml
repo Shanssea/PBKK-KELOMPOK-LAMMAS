@@ -3,40 +3,94 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h6>Welcome,</h6>
-            <h3><?php echo implode("",$this->session->get('nama')); ?></h3>
-            <h6><?php echo implode("",$this->session->get('nrp')); ?></h6>
+            <!-- <h3><?php echo implode("",$this->session->get('nama')); ?></h3> -->
+            <!-- <h6><?php echo implode("",$this->session->get('nrp')); ?></h6> -->
+            <h3><?php echo $this->session->get('nama_user'); ?></h3>
+            <h3><?php echo $this->session->get('nrp'); ?></h3>
         </div>
 
         <ul class="list-unstyled components">
             <li>
             <?php
                 echo $this->tag->linkTo([
-                    "/admin/".$id,
+                    "/admin/dashboard".$id,
                     "Beranda",
                 ]);
             ?>
             </li>
             <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventaris</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <?php
-                                echo $this->tag->linkTo([
-                                    "/admin/".$id."/listInv",
-                                    "List",
-                                ]);
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                                echo $this->tag->linkTo([
-                                    "/admin/".$id."/createInv",
-                                    "Tambah",
-                                ]);
-                            ?>
-                        </li>
-                    </ul>
-                </li>
+                <a href="#inventarisSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventaris</a>
+                <ul class="collapse list-unstyled" id="inventarisSubmenu">
+                    <li>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/".$id."/listInv",
+                                "List",
+                            ]);
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/".$id."/createInv",
+                                "Tambah",
+                            ]);
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            </li>
+            <li class="active">
+                <a href="#ruanganSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ruangan</a>
+                <ul class="collapse list-unstyled" id="ruanganSubmenu">
+                    <li>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/jadwalPemakaianRuangan/".$this->session->isAdmin,
+                                "Jadwal",
+                            ]);
+                        ?>
+                    </li>
+                    <li class="active">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listPermohonanRuangan/".$this->session->isAdmin,
+                                "Konfirmasi Peminjaman",
+                            ]);
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#pcSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PC</a>
+                <ul class="collapse list-unstyled" id="pcSubmenu">
+                    <li>
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listPC",
+                                "List",
+                            ]);
+                        ?>
+                    </li>
+                    <li class="active">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/tambahpcpage",
+                                "Tambah",
+                            ]);
+                        ?>
+                    </li>
+                    <li class="active">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listReservasiPC/",
+                                "Konfirmasi Peminjaman",
+                            ]);
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            
         </ul>
 
         <ul class="list-unstyled CTAs">

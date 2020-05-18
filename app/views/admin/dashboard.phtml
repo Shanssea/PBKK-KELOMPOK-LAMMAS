@@ -7,8 +7,7 @@ if ($this->session->isAdmin) {
     echo "<h2>Welcome to Lammas, Admin " . $nama . "!</h2>";
     ?>
     <div class="container">
-    <?php echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);
-    ?>
+    <!-- <?php echo $this->tag->linkTo(["/pengguna/logout", "Logout", 'class' => 'btn btn-warning']);?> -->
     <div>
     <div class="box col-md-6">
         <h5 style="text-align:center;   ">Menu</h5>
@@ -25,23 +24,3 @@ else {
     echo "Who are you?";
     header("refresh:2;url=/pengguna/loginpage");
 } ?>
-
-<style>
-h2{
-    margin:20px;
-    text-align:left;
-}
-li{
-    font-size:22px;
-}
-body{
-    background-image: url("<?php echo $this->url->get('img/Lammas_Logo.png')?>");
-    background-repeat: no-repeat;
-    background-position: center;height: 500px;
-    text-align: left;
-    
-}
-.box{
-    text-align: left;
-}
-</style>
