@@ -1,0 +1,64 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h6>Welcome,</h6>
+            <h3><?php echo implode("",$this->session->get('nama')); ?></h3>
+            <h6><?php echo implode("",$this->session->get('nrp')); ?></h6>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+            <?php
+                echo $this->tag->linkTo([
+                    "/admin/".$id,
+                    "Beranda",
+                ]);
+            ?>
+            </li>
+            <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventaris</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <?php
+                                echo $this->tag->linkTo([
+                                    "/admin/".$id."/listInv",
+                                    "List",
+                                ]);
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->tag->linkTo([
+                                    "/admin/".$id."/createInv",
+                                    "Tambah",
+                                ]);
+                            ?>
+                        </li>
+                    </ul>
+                </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="/pengguna/logout" class="download">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Menu</span>
+                </button>
+            </div>
+        </nav>
+
+        <?php echo $this->getContent(); ?>
+    </div>
+</div>

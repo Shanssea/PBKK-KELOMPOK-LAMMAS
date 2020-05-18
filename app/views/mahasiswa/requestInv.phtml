@@ -1,0 +1,45 @@
+<?php
+if($this->session->has('mhs')){
+    $id = $this->session->get('id');
+    ?>
+    <h3>Daftar Inventaris</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nomor</th>
+                <th>Nama</th>
+                <th>Status</th>
+                <th>Lab</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($invens as $inven) { ?>
+            <tr>
+                <td class="counterCell"></td>
+                <td><?php echo $inven->nama_barang; ?></td>
+                <td><?php echo $inven->status; ?></td>
+                <td><?php echo $inven->nama_lab; ?></td>
+                <td>
+                    <?php
+                    if ($inven->status == "unavailable"){
+                        echo $this->tag->linkTo([
+                            "/mahasiswa/". implode("",$id) . "/listInv",
+                            "Request",
+                            'class' => 'btn btn-secondary btn-block'
+                        ]);
+                    }else{
+                        echo $this->tag->linkTo([
+                            "/mahasiswa/requestInv/". implode("",$id) . "/" . $inven->id,
+                            "Request",
+                            'class' => 'btn btn-primary btn-block'
+                        ]);
+                    }
+                    ?>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <?php
+}

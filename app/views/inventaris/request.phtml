@@ -1,0 +1,42 @@
+<?php
+if ($this->session->has('mhs')) {
+    ?>
+    <h3 style = "padding-bottom : 30px">Request Peminjaman Barang</h3>
+
+    <?php echo $this->tag->form("inventaris/request/".$id."/".$invenId); ?>
+        
+        <p>
+            <label for="nama" style="width: 150px">Nama</label>
+            <?php echo $this->tag->textField(['nama', 'value' => $nama]); ?>
+        </p>
+
+        <p>
+            <label for="status" style="width: 150px">Keperluan</label>
+            <?php echo $this->tag->textField('keperluan'); ?>
+        </p>
+
+        <p>
+            <label for="tanggal" style="width: 150px">Tanggal Pinjam</label>
+            <?php echo $this->tag->dateField('tanggal'); ?>
+        </p>
+        <div class="d-flex justify-content-between" style="padding-top : 200px">
+            <?php echo $this->tag->linkTo(
+                [
+                    "/mahasiswa/".$id,
+                    "Kembali",
+                    'class' => 'btn btn-primary',
+                ]); ?>
+            <?php echo $this->tag->submitButton(
+                [
+                    "Submit",
+                    'class' => 'btn btn-success',
+                ]); ?>
+        </div>
+
+    </form> 
+<?php
+}else{
+    echo "Sorii, hanya admin yang boleh mengakses halaman ini :)";
+    header( "refresh:2;url=/" );
+}
+?>

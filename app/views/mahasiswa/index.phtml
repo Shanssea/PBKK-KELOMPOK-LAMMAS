@@ -1,1 +1,51 @@
-<?php echo "indexmhs";
+<?php
+if ($this->session->has('mhs')) {
+    $name = $this->session->get('nama');
+    //$id = $this->session->get('id');
+    ?>
+    <h3>Barang Pinjaman</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nomor</th>
+                <th>Nama Barang</th>
+                <th>Tanggal Pinjam</th>
+                <th>Keperluan</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($pinjInvs->count() > 0) {
+                ?>
+            <?php foreach ($pinjInvs as $pinjInv) { ?>
+                <tr>
+                    <td class="counterCell"></td>
+                    <td><?php echo $pinjInv->nama_barang; ?></td>
+                    <td><?php echo $pinjInv->tanggal; ?></td>
+                    <td><?php echo $pinjInv->keperluan; ?></td>
+                    <td><?php echo $pinjInv->status; ?></td>
+                    <td><?php
+                            echo $this->tag->linkTo([
+                                "/mahasiswa/cancelInv/". $id . "/" . $pinjInv->id,
+                                "Batal",
+                                'class' => 'btn btn-danger btn-block'
+                            ]);
+                        ?>
+                    </td>
+                </tr>
+                <?php } ?>
+            <?php }else{?>
+                        <tr>
+                            <td colspan="6"><p class="text-center">Bersiihh, tidak ada request barang~</p></td>
+                        </tr>
+                        <?php
+                    } ?>
+        </tbody>
+    </table>
+    <?php
+}else{
+    echo "Sorii, hanya " . $name . " yang bisa mengakses halaman ini :)";
+    header( "refresh:2;url=/" );
+}
