@@ -13,7 +13,7 @@
             <li>
             <?php
                 echo $this->tag->linkTo([
-                    "/mahasiswa/dashboard".$id,
+                    "/mahasiswa/dashboard",
                     "Beranda",
                 ]);
             ?>
@@ -21,7 +21,7 @@
             <li>
             <?php
                 echo $this->tag->linkTo([
-                    "/mahasiswa/".$id."/listInv",
+                    "/mahasiswa/listInv/".$this->session->user_id,
                     "Pinjam Barang",
                 ]);
             ?>
@@ -48,7 +48,7 @@
                     <li class="active">
                         <?php
                             echo $this->tag->linkTo([
-                                "/mahasiswa/jadwalpemakaianruangan",
+                                "/mahasiswa/reservelabpage",
                                 "Pinjam Ruangan",
                             ]);
                         ?>

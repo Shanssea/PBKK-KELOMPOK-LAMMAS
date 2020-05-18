@@ -19,6 +19,8 @@ class PcController extends \Phalcon\Mvc\Controller
                 ],
             ]
         );
+        $this->view->setTemplateAfter('admin');
+        $this->view->pagetitle = "List PC Lab";
         $this->view->pcs = $pcs;
     }
 

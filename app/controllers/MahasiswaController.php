@@ -85,6 +85,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
                     'using' => ['id_lab', 'nama_lab'],
                     'useEmpty'   => true,
                     'emptyText'  => 'Pilih lab yang ingin dilihat',
+                    // 'class' => 'dropdown',
                 ]
             ));
             $this->view->form = $form;
@@ -139,6 +140,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
         ));
         $form->add(new TextArea('keperluan'));
         $this->view->form = $form;
+        $this->view->pagetitle = "Form Reservasi Lab";
     }
 
     /**
@@ -148,6 +150,7 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
     public function listInvAction($id)
     {
         $this->view->id = $id;
+        $this->view->pagetitle = "Daftar Inventaris";
         $this->view->pick("mahasiswa/requestInv");
         $this->view->invens = ListInv::find();
     }

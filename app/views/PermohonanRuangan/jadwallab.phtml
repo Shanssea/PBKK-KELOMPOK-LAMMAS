@@ -6,11 +6,11 @@ if ($this->session->has('nama_user')) {
     if(!$this->session->isAdmin) {   
         echo $this->tag->linkTo("/mahasiswa/reservelabpage", "Reservasi lab")."</br>";
     }
-    if($this->session->isAdmin) {   
+    /*if($this->session->isAdmin) {   
         echo $this->tag->linkTo("/admin/dashboard", "Kembali ke dashboard");
     } else {
         echo $this->tag->linkTo("/mahasiswa/jadwalpemakaianruangan", "Kembali");
-    } ?>
+    }*/ ?>
 
     <div class="box col-md-10">
         <?php foreach ($prs as $pr) { ?>

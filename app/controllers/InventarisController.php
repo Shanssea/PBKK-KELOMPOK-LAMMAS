@@ -28,7 +28,7 @@ class InventarisController extends ControllerBase
         }
 
         if ($success) {
-            return $this->response->redirect("/admin/".$id);
+        return $this->response->redirect("/admin/dashboard"/*.$id*/);
         } else {
             echo "Oops, seems like the following issues were encountered: ";
 
@@ -78,7 +78,7 @@ class InventarisController extends ControllerBase
             $success = $inven->save();
 
             if ($success) {
-                return $this->response->redirect("/admin/".$id);
+            return $this->response->redirect("/admin/".$id."/listInv");
             } else {
                 echo "Oops, seems like the following issues were encountered: ";
     
@@ -104,7 +104,7 @@ class InventarisController extends ControllerBase
         $success = $inven->delete();
 
         if ($success) {
-            return $this->response->redirect("/admin/".$id);
+            return $this->response->redirect("/admin/".$id."/listInv");
         } else {
             echo "Oops, seems like the following issues were encountered: ";
 
@@ -139,7 +139,7 @@ class InventarisController extends ControllerBase
         $inven->save();
 
         if ($success) {
-            return $this->response->redirect('/admin/'.$id);
+            return $this->response->redirect('/admin/dashboard'/*.$id*/);
         } else {
             echo "Oops, seems like the following issues were encountered: ";
 
@@ -166,7 +166,7 @@ class InventarisController extends ControllerBase
         $success = $pinjInv->save();
 
         if ($success) {
-            return $this->response->redirect('/admin/'.$id);
+            return $this->response->redirect('/admin/dashboard'/*.$id*/);
         } else {
             echo "Oops, seems like the following issues were encountered: ";
 
@@ -218,7 +218,7 @@ class InventarisController extends ControllerBase
             $success = $pinjInv->save();
 
             if ($success) {
-                return $this->response->redirect("/mahasiswa/".$id);
+                return $this->response->redirect("/mahasiswa/dashboard");
             } else {
                 echo "Oops, seems like the following issues were encountered: ";
     

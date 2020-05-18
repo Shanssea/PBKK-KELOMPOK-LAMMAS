@@ -1,8 +1,8 @@
 <?php
 
 if ($this->session->has('nama_user')) { ?>
-    <h2>Form Reservasi Lab</h2>
-    <div class="box col-md-4">
+    <!-- <h2>Form Reservasi Lab</h2> -->
+    <div class="box col-sm-8">
         <?php echo $this->tag->form("/mahasiswa/reservelab"); ?>
             
             <p>            
@@ -18,7 +18,7 @@ if ($this->session->has('nama_user')) { ?>
                 <input type="datetime-local" id="waktu" name="waktu" required>
             </p>
             <p>
-                <?php echo $this->tag->submitButton(["Request!", 'class'=>'btn btn-primary']); echo $this->tag->linkTo("/mahasiswa/jadwalpemakaianruangan", " Kembali");?>
+                <?php echo $this->tag->submitButton(["Request!", 'class'=>'btn btn-primary']); ?>
             </p>
         </form>
     </div>

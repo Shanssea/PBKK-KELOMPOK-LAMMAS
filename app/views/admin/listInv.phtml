@@ -3,8 +3,9 @@ if ($this->session->has('isAdmin')) {
     // Retrieve its value
     // $id = implode("",$this->session->get('isAdmin'));
     $id = $this->session->get('isAdmin');
+    echo $this->tag->linkTo(["/admin/".$this->session->isAdmin."/createInv", "Tambah Inventaris", "class"=>"btn btn-primary"]);
     ?>
-    <h3>Inventaris</h3>
+    <!-- <h3>Inventaris</h3> -->
     <table class="table table-bordered table-hover">
         <thead class="text-center thead-light">
             <tr>
@@ -26,7 +27,8 @@ if ($this->session->has('isAdmin')) {
                     <div class="d-flex justify-content-around">
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$id."/updateInv/".$inven->id_inv,
+                                // "/admin/".$id."/updateInv/".$inven->id_inv,
+                                "/admin/updateInv/".$id."/".$inven->id_inv,
                                 "Edit",
                                 'class' => 'btn btn-success',
                                 'style' => 'width:110px'
@@ -34,7 +36,8 @@ if ($this->session->has('isAdmin')) {
                         ?>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$id."/deleteInv/".$inven->id_inv,
+                                // "/admin/".$id."/deleteInv/".$inven->id_inv,
+                                "/admin/deleteInv/".$id."/".$inven->id_inv,
                                 "Delete",
                                 'class' => 'btn btn-danger',
                                 'style' => 'width:110px'
