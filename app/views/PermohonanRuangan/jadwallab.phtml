@@ -2,7 +2,6 @@
 if ($this->session->has('nama_user')) {
 
     // echo "<h5>Jadwal Ruangan Lab " . $namalab . "<h5>";
-    echo "<h5>". $pagetitle. " " . $namalab . "<h5>";
     if(!$this->session->isAdmin) {   
         echo $this->tag->linkTo("/mahasiswa/reservelabpage", "Reservasi lab")."</br>";
     }
@@ -47,7 +46,6 @@ header("refresh:2;url=/pengguna/loginpage");
 <style>
 body {
     /* background-color: #E5E9EC; */
-    text-align: center;
     margin:auto;
 }
 .thead-blu {

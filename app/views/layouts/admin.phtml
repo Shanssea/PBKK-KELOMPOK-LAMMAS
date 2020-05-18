@@ -24,7 +24,7 @@
                     <li>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$this->session->isAdmin."/listInv",
+                                "/admin/listInv/".$this->session->isAdmin,
                                 // "/admin/listInv/".$id,
                                 "List",
                             ]);
@@ -33,7 +33,7 @@
                     <li>
                         <?php
                             echo $this->tag->linkTo([
-                                "/admin/".$this->session->isAdmin."/createInv",
+                                "/admin/createInv/".$this->session->isAdmin,
                                 "Tambah",
                             ]);
                         ?>

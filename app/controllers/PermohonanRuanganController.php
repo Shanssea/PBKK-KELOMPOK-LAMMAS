@@ -11,6 +11,7 @@ class PermohonanRuanganController extends \Phalcon\Mvc\Controller
 
     public function jadwallabAction(int $lab)
     {
+        
         if($this->session->has('nama_user'))
         {
             $prs = PermohonanRuangan::find(     // 
@@ -42,7 +43,8 @@ class PermohonanRuanganController extends \Phalcon\Mvc\Controller
                 $this->view->setTemplateAfter('mahasiswa');
             }
             $this->view->prs = $prs;
-            $this->view->namalab = $infolab->nama_lab;
+            $namalab = $infolab->nama_lab;
+            $this->view->pagetitle = "Jadwal Pemakaian Ruangan ".$namalab;
         }
     }
 

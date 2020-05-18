@@ -9,6 +9,7 @@ class InventarisController extends ControllerBase
     public function createAction($id)
     {
         $this->view->setTemplateAfter('admin');
+        $this->view->pagetitle="Tambah Inventaris";
         $this->view->id->$id;
     }
 
