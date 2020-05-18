@@ -25,12 +25,13 @@ class AdminController extends \Phalcon\Mvc\Controller
         
         // untuk lihat jumlah peminjaman inv labnya
         $statusInv = "unverified";
-        $pinjInvs = PinjamInv::find(
+        // $pinjInvs = PinjamInv::find(
+        $pinjInvs = ListPinjamInv::find(
             [
                 'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $statusInv
+                    'status' => $statusInv,
                 ]
             ]
         );
@@ -42,7 +43,7 @@ class AdminController extends \Phalcon\Mvc\Controller
                 'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $status
+                    'status' => $status,
                 ]
             ]
         );
@@ -53,7 +54,7 @@ class AdminController extends \Phalcon\Mvc\Controller
                 'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $status
+                    'status' => $status,
                 ]
             ]
         );
