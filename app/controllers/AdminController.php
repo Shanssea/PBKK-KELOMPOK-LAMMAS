@@ -24,21 +24,25 @@ class AdminController extends \Phalcon\Mvc\Controller
         $this->view->pagetitle = "Dashboard";
         
         // untuk lihat jumlah peminjaman inv labnya
-        $pinjInvs = PinjamInv::find(
+        $statusInv = "unverified";
+        $pinjInvs = ListPinjamInv::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $statusInv,
                 ]
             ]
         );
 
         // untuk lihat jumlah peminjaman pc labnya
+        $status = "Menunggu Persetujuan Admin";
         $pinjPcs = PermohonanPc::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $status,
                 ]
             ]
         );
@@ -46,9 +50,10 @@ class AdminController extends \Phalcon\Mvc\Controller
         // untuk lihat jumlah peminjaman ruangan labnya
         $pinjLabs = PermohonanRuangan::find(
             [
-                'id_lab = (:id:)',
+                'status = (:status:) AND id_lab = (:id:)',
                 'bind' => [
                     'id' => $id,
+                    'status' => $status,
                 ]
             ]
         );
