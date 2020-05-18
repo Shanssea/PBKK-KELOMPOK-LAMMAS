@@ -38,6 +38,14 @@
                             ]);
                         ?>
                     </li>
+                    <li class="active">
+                        <?php
+                            echo $this->tag->linkTo([
+                                "/admin/listpeminjamanInv/".$this->session->isAdmin,
+                                "Konfirmasi Peminjaman",
+                            ]);
+                        ?>
+                    </li>
                 </ul>
             </li>
             </li>

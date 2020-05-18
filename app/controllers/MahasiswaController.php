@@ -13,8 +13,10 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
      * DASHBOARD
      */
 
-    public function indexAction($id)
+    // public function indexAction($id)
+    public function indexAction()
     {
+        $id = $this->session->isAdmin;
         $this->view->id = $id;
 
         $conditions = ['id' => $id];

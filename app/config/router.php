@@ -150,14 +150,17 @@ $router->add(
  * RUANGAN
  */
 
-$router->add(
-    "/admin/jadwalPemakaianRuangan/([0-9]+)/:params",
-    array(
-        "controller" => "PermohonanRuangan",
-        "action"     => "jadwallab",
-        "id"       => 1, // ([0-9]
-    )
-);
+// $router->add(
+//     "/admin/jadwalPemakaianRuangan/([0-9]+)/:params",
+//     array(
+//         // "controller" => "PermohonanRuangan",
+//         // "action"     => "jadwallab",
+//         // "id"       => 1, // ([0-9]
+//         "controller" => "admin",
+//         "action"     => "jadwalPemakaianRuangan",
+//         "id"       => 1, // ([0-9]
+//     )
+// );
 
 $router->add(
     "/admin/listPermohonanRuangan/([0-9]+)/:params",

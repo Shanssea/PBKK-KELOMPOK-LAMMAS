@@ -15,18 +15,6 @@ class AdminController extends \Phalcon\Mvc\Controller
     public function indexAction()
     {
         // $this->view->setTemplateAfter('admin');
-        $id = $this->session->isAdmin;
-        $this->view->id = $id;
-        $status = "unverified";
-        $this->view->pinjInvs = ListPinjamInv::find(
-            [
-                'status = (:status:) AND id_lab = (:id:)',
-                'bind' => [
-                    'id' => $id,
-                    'status' => $status,
-                ]
-            ]
-        );
     }
 
     public function dashboardAction()
@@ -178,6 +166,16 @@ class AdminController extends \Phalcon\Mvc\Controller
     /**
      * LAB
      */
+    public function jadwalPemakaianRuanganAction($id)
+    {
+        // $this->view->id->$id;
+        $this->view->id = $id;
+        return $this->dispatcher->forward([
+                'controller' => 'PermohonanRuangan',
+                'action' => 'jadwallab',
+                'params' => [$id]
+            ]);
+    }
 
     public function detailreservasilabAction(int $id)
     {
@@ -250,6 +248,23 @@ class AdminController extends \Phalcon\Mvc\Controller
                 'action' => 'create',
                 'params' => [$id]
             ]);
+    }
+
+    public function listpeminjamanInvAction($id)
+    {
+        // $id = $this->session->isAdmin;
+        $this->view->id = $id;
+        $status = "unverified";
+        $this->view->pinjInvs = ListPinjamInv::find(
+            [
+                'status = (:status:) AND id_lab = (:id:)',
+                'bind' => [
+                    'id' => $id,
+                    'status' => $status,
+                ]
+            ]
+        );
+        $this->view->pagetitle = "Barang Pinjaman";
     }
 
     public function updateInvAction($id,$invenId)
