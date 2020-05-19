@@ -36,13 +36,12 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
         $this->view->id = $id;
 
         # untuk daftar list pinjaman barang user
-        $status = "done";
         $this->view->pinjInvs = ListPinjamInv::find(
             [
-                'status = (:status:) AND id_user = (:id:)',
+                'status != (:status:) AND id_user = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $status,
+                    'status' => "approved",
                 ],
             ]
         );
@@ -50,10 +49,10 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
         # untuk daftar list pinjaman ruang si user
         $this->view->pinjLabs = PermohonanRuangan::find(
             [
-                'status = (:status:) AND id_user = (:id:)',
+                'status != (:status:) AND id_user = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $status,
+                    'status' => "Permohonan selesai",
                 ],
             ]
         );
@@ -64,10 +63,10 @@ class MahasiswaController extends \Phalcon\Mvc\Controller
         #untuk daftar list reservasi pc user
         $this->view->pinjPcs = PermohonanPc::find(
             [
-                'status = (:status:) AND id_user = (:id:)',
+                'status != (:status:) AND id_user = (:id:)',
                 'bind' => [
                     'id' => $id,
-                    'status' => $status,
+                    'status' => "Permohonan selesai",
                 ],
             ]
         );
