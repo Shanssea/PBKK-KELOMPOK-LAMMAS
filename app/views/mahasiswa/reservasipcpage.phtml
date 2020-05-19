@@ -2,27 +2,39 @@
 
 if ($this->session->has('nama_user')) { ?>
     <!-- <h2>Form Reservasi PC</h2> -->
-    <div class="box col-sm-6">
-        <?php echo $this->tag->form("/mahasiswa/reservepc"); ?>
-            
-            <p>            
-                <label for="lab">Lab tujuan</label>
-                <?php echo $form->render('lab', ['required'=>True]); ?>
-            </p>
-            <p>            
-                <label for="jenis">Jenis permohonan</label>
-                <?php echo $form->render('jenis', ['required'=>True]); ?>
-            </p>
-            <p>
-                <label for="keperluan">Keperluan</label>
-                <?php echo $form->render('keperluan', ['required'=>True]); ?>
-            </p>        
-            <p>
-                <?php echo $this->tag->submitButton(["Request!",'class' => 'btn btn-success']); //echo $this->tag->linkTo("/mahasiswa/dashboard", " Kembali");?>
-
-            </p>
-        </form>
+    <div class="container" >
+        <div class="box col-sm-7 text-left" style="padding 80px">
+            <?php echo $this->tag->form("/mahasiswa/reservepc"); ?>
+                
+                <p>            
+                    <label for="lab" style="width: 250px">Lab tujuan</label>
+                    <?php echo $form->render('lab', ['required'=>True]); ?>
+                </p>
+                <p>            
+                    <label for="jenis" style="width: 250px">Jenis permohonan</label>
+                    <?php echo $form->render('jenis', ['required'=>True]); ?>
+                </p>
+                <p>
+                    <label for="keperluan" style="width: 250px">Keperluan</label>
+                    <?php echo $form->render('keperluan', ['required'=>True]); ?>
+                </p>        
+                <div class="d-flex justify-content-between" style="padding-top : 2pc">
+                    <?php echo $this->tag->linkTo(
+                        [
+                            "/mahasiswa/dashboard",
+                            "Kembali",
+                            'class' => 'btn btn-primary',
+                        ]); ?>
+                    <?php echo $this->tag->submitButton(
+                        [
+                            "Request!",
+                            'class' => 'btn btn-success',
+                        ]); ?>
+                </div>
+            </form>
+        </div>
     </div>
+
         <?php if($this->flashSession->has('success')){ 
             echo $this->flash->output();
         }
@@ -38,18 +50,19 @@ else {
 <style>
 body {
     /* background-color: #E5E9EC; */
-    text-align: center;
-    margin:auto;
+    /* text-align: center; */
+    /* margin:auto; */
 }
 
 .box{
       background-color: white;
       box-shadow: 0px 10px 8px #888888;
       border-radius: 15px;
-      padding-right: 100px;
+      /* padding-right: 80px; */
+      padding: 20px 50px;
       text-align: right;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
       margin:auto;
       float:none;
 }

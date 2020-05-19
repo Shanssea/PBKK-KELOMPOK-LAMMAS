@@ -186,6 +186,7 @@ class InventarisController extends ControllerBase
 
     public function requestAction($id,$invenId)
     {
+        $this->view->pagetitle="Request Peminjaman Barang";
         $this->view->setTemplateAfter('mahasiswa');
         $this->view->id = $id;
         $this->view->invenId = $invenId;

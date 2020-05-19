@@ -2,42 +2,71 @@
 // if ($this->session->has('mhs')) {
 if ($this->session->has('nama_user')) {
     ?>
-    <h3 style = "padding-bottom : 30px">Request Peminjaman Barang</h3>
+    <div class="container">
+        <div class="box col-sm-7 text-left" style="padding 80px">
+            <?php echo $this->tag->form("inventaris/request/".$id."/".$invenId); ?>
+            
+            <p>
+                <label for="nama" style="width: 250px">Nama</label>
+                <?php echo $this->tag->textField(['nama', 'value' => $nama]); ?>
+            </p>
 
-    <?php echo $this->tag->form("inventaris/request/".$id."/".$invenId); ?>
-        
-        <p>
-            <label for="nama" style="width: 150px">Nama</label>
-            <?php echo $this->tag->textField(['nama', 'value' => $nama]); ?>
-        </p>
+            <p>
+                <label for="status" style="width: 250px">Keperluan</label>
+                <?php echo $this->tag->textField('keperluan'); ?>
+            </p>
 
-        <p>
-            <label for="status" style="width: 150px">Keperluan</label>
-            <?php echo $this->tag->textField('keperluan'); ?>
-        </p>
+            <p>
+                <label for="tanggal" style="width: 250px">Tanggal Pinjam</label>
+                <?php echo $this->tag->dateField('tanggal'); ?>
+            </p>
+            <div class="d-flex justify-content-between" style="padding-top : 2pc">
+                <?php echo $this->tag->linkTo(
+                    [
+                        "/mahasiswa/listInv/".$id,
+                        "Kembali",
+                        'class' => 'btn btn-primary',
+                    ]); ?>
+                <?php echo $this->tag->submitButton(
+                    [
+                        "Submit",
+                        'class' => 'btn btn-success',
+                    ]); ?>
+            </div>
 
-        <p>
-            <label for="tanggal" style="width: 150px">Tanggal Pinjam</label>
-            <?php echo $this->tag->dateField('tanggal'); ?>
-        </p>
-        <div class="d-flex justify-content-between" style="padding-top : 200px">
-            <?php echo $this->tag->linkTo(
-                [
-                    "/mahasiswa/".$id,
-                    "Kembali",
-                    'class' => 'btn btn-primary',
-                ]); ?>
-            <?php echo $this->tag->submitButton(
-                [
-                    "Submit",
-                    'class' => 'btn btn-success',
-                ]); ?>
+        </form> 
         </div>
+    </div>
 
-    </form> 
+
 <?php
 }else{
     echo "Sorii, hanya admin yang boleh mengakses halaman ini :)";
     header( "refresh:2;url=/" );
 }
 ?>
+
+<style>
+body {
+    /* background-color: #E5E9EC; */
+    /* text-align: center; */
+    /* margin:auto; */
+}
+
+.box{
+      background-color: white;
+      box-shadow: 0px 10px 8px #888888;
+      border-radius: 15px;
+      /* padding-right: 80px; */
+      padding: 20px 50px;
+      text-align: right;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
+      margin:auto;
+      float:none;
+}
+
+.page-header{
+      margin:auto;
+}
+</style>

@@ -121,6 +121,7 @@ class PermohonanRuanganController extends \Phalcon\Mvc\Controller
 
     public function listprAction(int $lab)
     {
+        $this->view->pagetitle="Konfirmasi Peminjaman Ruangan";
         if($this->session->has('nama_user'))
         {
             $prs = PermohonanRuangan::find(     // 

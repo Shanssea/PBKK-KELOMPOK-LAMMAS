@@ -3,8 +3,10 @@
     echo $this->tag->form("/mahasiswa/jadwallab");
     // echo "<h5> Lihat jadwal lab <h5>";
     echo $form->render('lab');
-    echo $this->tag->submitButton(["Lihat!", 'class' => 'btn btn-primary', 'style' => 'margin-left: 1pc;']);
-    // echo "</br></br>".$this->tag->linkTo("/mahasiswa/dashboard", " Kembali");
+    ?>
+    <?php
+        echo $this->tag->submitButton(["Lihat!", 'class' => 'btn btn-primary', 'style' => 'margin-left: 1pc;']);
+        // echo "</br></br>".$this->tag->linkTo("/mahasiswa/dashboard", " Kembali");
     ?>
     </form>
 </div>
@@ -12,7 +14,7 @@
 <style>
 body {
     /* background-color: #E5E9EC; */
-    text-align: center;
+    /* text-align: center; */
     margin:auto;
 }
 
@@ -20,7 +22,7 @@ body {
       background-color: white;
       box-shadow: 0px 10px 8px #888888;
       border-radius: 15px;
-      padding-right: 100px;
+      padding-right: 80px;
       text-align: right;
       padding-top: 20px;
       padding-bottom: 20px;
