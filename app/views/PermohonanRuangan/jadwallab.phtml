@@ -12,31 +12,38 @@ if ($this->session->has('nama_user')) {
     }*/ ?>
 
     <!-- <div class="box col-md-10"> -->
-        <?php foreach ($prs as $pr) { ?>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-blu">
-            <tr>
-                <th>#</th>
-                <th>Waktu</th>
-                <th>Keperluan</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php 
-            $i=1;
+        <?php if ($prs->count() > 0){
             foreach ($prs as $pr) { ?>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-blu">
                 <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $pr->tanggal; ?></td>
-                    <td><?php echo $pr->keperluan; ?></td>
-
+                    <th>#</th>
+                    <th>Waktu</th>
+                    <th>Keperluan</th>
                 </tr>
-            <?php $i++; } ?>
-            </tbody>
-        </table>
-    <!-- </div> -->
-    <?php    
-    }
+                </thead>
+                <tbody>
+                <?php 
+                $i=1;
+                foreach ($prs as $pr) { ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td><?php echo $pr->tanggal; ?></td>
+                        <td><?php echo $pr->keperluan; ?></td>
+
+                    </tr>
+                <?php $i++; } ?>
+                </tbody>
+            </table>
+        <!-- </div> -->
+        <?php    
+        }
+    } else{ ?>
+        <tr>
+            <td colspan="5"><p class="text-center">Bersiihh, tidak ada request ruangan~</p></td>
+        </tr>
+ <?php  }
+
 }
 else {
 echo "You must login to see this page";
